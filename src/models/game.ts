@@ -1,5 +1,12 @@
+import { Player } from "./player.class";
+
 export class Game {
-  public players: string[] = [];
+  public players:Player[]  = [
+    {name: 'George', picture: './assets/profile/bee.png'},
+    {name: 'Bianca', picture: './assets/profile/grim-reaper.png'},
+    {name: 'John', picture: './assets/profile/knight.png'},
+    {name: 'Jack', picture: './assets/profile/princess.png'}
+  ]
   public stack: string[] = [];
   public playedCards: string[] = [];
   public currentPlayer: number = 0;
