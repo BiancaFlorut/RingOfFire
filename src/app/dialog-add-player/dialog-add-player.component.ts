@@ -1,7 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import {MatDialogModule} from '@angular/material/dialog';
 import {
-  MatDialog,
   MAT_DIALOG_DATA,
   MatDialogRef,
   MatDialogTitle,
@@ -13,11 +11,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Player } from '../../models/player.class';
 
-export interface DialogData {
-  name: string;
-  picture: string;
-}
 
 @Component({
   selector: 'app-dialog-add-player',
@@ -36,12 +31,12 @@ export interface DialogData {
   styleUrl: './dialog-add-player.component.sass'
 })
 export class DialogAddPlayerComponent {
-  name: string = '';
-  picture: string = './assets/profile/wizard.png';
+  pictures: string[] = ['./assets/profile/angel.png', './assets/profile/bee.png', './assets/profile/elf.png', './assets/profile/frog.png', './assets/profile/grim-reaper.png', './assets/profile/knight.png', './assets/profile/medusa.png', './assets/profile/princess.png', './assets/profile/unicorn.png', './assets/profile/vampire.png', './assets/profile/wizard.png'];
+  player: Player = { name: '', picture: this.pictures[Math.floor(Math.random() * this.pictures.length)] };
 
   constructor(
     public dialogRef: MatDialogRef<DialogAddPlayerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: Player,
   ) {}
 
   onNoClick(): void {

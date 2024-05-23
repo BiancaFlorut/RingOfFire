@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { Player } from '../../models/player.class';
 
 @Component({
   selector: 'app-game',
@@ -46,8 +47,8 @@ export class GameComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe((newPlayer: Player) => {
+      this.game?.players.push(newPlayer);
     });
   }
 }
