@@ -1,3 +1,4 @@
+<app-player style="top: 130px" class="player-banner"></app-player>
 <div class="field">
   <div class="card-stack">
     <img
@@ -6,14 +7,20 @@
       src="./assets/cards/card_cover.png"
       alt=""
     />
-    <img 
+    <img
       (click)="takeCard()"
       style="right: 25px"
       class="top-card"
       src="./assets/cards/card_cover.png"
       alt=""
     />
-    <img 
+    <img
+      *ngFor="let card of game?.playedCards"
+      class="played-card"
+      src="./assets/cards/{{ card }}.png"
+      alt=""
+    />
+    <img
       (click)="takeCard()"
       *ngIf="pickCardAnimation"
       style="right: 25px"

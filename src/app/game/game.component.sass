@@ -3,7 +3,7 @@
   height: 100vh
   max-width: 100%
   background-image: url('./../../assets/imgs/wall-1846965_1280.jpg')
-  background-repeat: no-repeat
+  background-repeat: repeat
   background-size: 100%
   background-position: center
   display: flex
@@ -22,6 +22,10 @@
   &:hover
     transform: scale(1.025) translateY(-5px)
 
+.played-card
+  transform: scale(1) translateX(180px) translateY(-250px) rotate(-10deg)
+  right: 25px
+
 .pick-card
   transition: all 200ms ease-in-out
   animation: pick-card-animation 1s ease-in-out forwards
@@ -34,4 +38,8 @@
   50%
     transform: scale(1.5)
   100%
-    transform: scale(1.1) translateX(180px) translateY(-250px) rotate(-10deg)
+    transform: scale(1.0) translateX(180px) translateY(-250px) rotate(-10deg)
+
+.player-banner
+  position: absolute
+  right: 0
