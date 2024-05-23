@@ -10,6 +10,7 @@ import { Game } from '../../models/game';
   styleUrl: './game.component.sass'
 })
 export class GameComponent {
+  currentCard: string = '';
   pickCardAnimation = false;
   game: Game | undefined;
 
@@ -24,6 +25,15 @@ export class GameComponent {
   }
 
   takeCard() {
+    if (!this.pickCardAnimation) {
+      this.currentCard = this.game?.stack.pop() || '';
+    console.log(this.currentCard);
+    
     this.pickCardAnimation = true;
+
+    setTimeout(() => {
+      this.pickCardAnimation = false;
+    }, 1500);
+    }
   }
 }
