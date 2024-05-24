@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { Player } from '../../models/player.class';
 import { GameInfoComponent } from '../game-info/game-info.component';
 
@@ -26,8 +26,6 @@ export class GameComponent {
 
   ngOnInit() {
     this.newGame();
-    console.log(this.game);
-
   }
 
   newGame() {
@@ -35,9 +33,13 @@ export class GameComponent {
   }
 
   takeCard() {
-    if (!this.pickCardAnimation) {
+    if (!this.pickCardAnimation && this.game) {
       this.currentCard = this.game?.stack.pop() || '';
       this.pickCardAnimation = true;
+      if (this.game.currentPlayer == this.game.players.length - 1) {
+        this.game.currentPlayer = 0;
+      } else
+        this.game.currentPlayer++;
       setTimeout(() => {
         this.pickCardAnimation = false;
         this.game?.playedCards.push(this.currentCard);
