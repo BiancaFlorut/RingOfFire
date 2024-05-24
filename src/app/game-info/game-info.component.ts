@@ -25,8 +25,8 @@ export class GameInfoComponent implements OnChanges {
     { title: 'Rule', description: 'Make a rule. Everyone needs to drink when he breaks the rule.' },
   ];
 
-  title = '';
-  description = '';
+  title = 'Please pick a card';
+  description = 'Please click on the card stack to select the next card';
 
   @Input() card: string | undefined;
 

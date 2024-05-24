@@ -35,7 +35,7 @@ export class DialogAddPlayerComponent {
   player: Player = { name: '', picture: this.pictures[Math.floor(Math.random() * this.pictures.length)] };
 
   constructor(
-    public dialogRef: MatDialogRef<DialogAddPlayerComponent>,
+    private dialogRef: MatDialogRef<DialogAddPlayerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Player,
   ) {}
 

@@ -51,6 +51,7 @@ export class GameComponent {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
     dialogRef.afterClosed().subscribe((newPlayer: Player) => {
+      if (!newPlayer) return;
       this.game?.players.push(newPlayer);
     });
   }
