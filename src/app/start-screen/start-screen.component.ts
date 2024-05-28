@@ -15,9 +15,10 @@ export class StartScreenComponent {
 
   }
 
-  newGame() {
+  async newGame() {
     let game = new Game();
-    const id = this.firestore.addGame(game);
+    const id = await this.firestore.addGame(game);
+    console.log('Game with id;', id, 'is now: ', game);
     this.router.navigate(['/game/' + id]);
 
   }

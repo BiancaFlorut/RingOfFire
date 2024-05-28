@@ -49,18 +49,20 @@
       src="./assets/cards/{{ card }}.png"
       alt=""
     /> -->
-    <img
+    @if (game?.pickCardAnimation) {
+      <img
       (click)="takeCard()"
-      *ngIf="pickCardAnimation"
       style="right: 25px"
       class="top-card pick-card"
-      src="./assets/cards/{{ currentCard }}.png"
+      src="./assets/cards/{{ game?.currentCard }}.png"
       alt=""
     />
+    }
+    
   </div>
 </div>
 
-<app-game-info [card]="currentCard" class="game-info"></app-game-info>
+<app-game-info [card]="game?.currentCard" class="game-info"></app-game-info>
 
 <button mat-fab color="secondary" class="btn-add" (click)="openDialog()">
   <mat-icon>add</mat-icon>

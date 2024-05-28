@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { DocumentData, Firestore, Unsubscribe, addDoc, collection, doc, onSnapshot } from '@angular/fire/firestore';
+import { DocumentData, Firestore, Unsubscribe, addDoc, collection, doc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { Game } from '../../models/game';
-import { Player } from '../../models/player.class';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +23,6 @@ export class FirebaseService {
     let docRef = doc(this.firestore, 'games', id);
     this.unsubGame = onSnapshot(docRef, (data) => {
       this.game = data.data();
-      console.log('Game with id;', id, 'is now: ',this.game);
     });
   }
 
@@ -34,7 +32,21 @@ export class FirebaseService {
   }
 
   async addGame(game: Game) {
-    return await addDoc(collection(this.firestore, 'games'), game.toJSON());
+    const docRef = collection(this.firestore, 'games');
+    let id;
+    await addDoc(docRef, game.toJSON()).then((doc) => { 
+      id = doc.id;
+    ; });
+    return id;
+    
+  }
+
+  updateGame(game: Game, id: string) {
+    if (id.length > 0) {
+      let docRef = doc(this.firestore, 'games', id);
+      return updateDoc(docRef, game.toJSON());
+    }
+    else return this.addGame(game);
   }
 
 }
