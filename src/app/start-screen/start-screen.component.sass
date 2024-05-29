@@ -36,6 +36,12 @@
       text-align: center
       font-size: 60px
       margin: 20px 0
+    @media screen and (max-width: 1200px)
+      width: 60%
+    @media screen and (max-width: 770px)
+      width: 90%
+  @media screen and (max-width: 1200px)
+      background-size: 100%
 
 .start_label_box
   display: flex
@@ -48,6 +54,15 @@
   img
     width: 42vh
     height: auto
+  @media screen and (max-width: 500px)
+    width: 30vh
+    img
+      width: 30vh
+  @media screen and (max-width: 400px)
+    width: 25vh
+    img
+      width: 25vh
+    
 
 .start_label
   position: relative
@@ -76,3 +91,5 @@
     box-shadow: 0 0 10px #cf2a2a75
   span
     padding: 16px 20px
+  @media screen and (max-width: 400px)
+    font-size: 26px
