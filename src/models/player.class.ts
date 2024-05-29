@@ -1,4 +1,4 @@
-export class Player {
-  name: string | undefined;
-  picture: string | undefined;
+export interface Player {
+  name: string;
+  picture: string;
 }
